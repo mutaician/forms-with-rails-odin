@@ -1,0 +1,58 @@
+<h1>Create a new user</h1>
+
+<%= form_with model: @user, url: users_path do |form|%>
+    <%= form.label :username%>
+    <%= form.text_field :username%>
+    <br>
+    <%= form.label :email%>
+    <%= form.email_field :email%>
+    <br>
+    <%= form.label :password%>
+    <%= form.password_field :password %>
+    <br><br>
+    <% if @user.errors.any? %>
+        <div>
+            <h4> <%= pluralize(@user.errors.count, "error")%> prohibited this user from being saved: </h4>
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                    <li> <%= message %> </li>
+                <% end %>
+            </ul>
+        </div>
+        <%end%>
+    <%= form.submit "Create user"%>
+<%end%>
+
+<style>
+    h1 {
+        color: blue;
+        font-size: 24px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        width: 200px;
+        padding: 5px;
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+
+    ul {
+        list-style-type: none;
+        color: red;
+    }
+
+    input[type="submit"] {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>

@@ -1,0 +1,10 @@
+
+<h3>All users</h3>
+<% @users.each do |user| %>
+    <p><%= user.username %></p>
+    <p><%= user.email %></p>
+    <p><%= user.password %></p>
+    <p><%= user.created_at %></p>
+    <p><%= user.updated_at %></p>
+    <br>
+<% end %>
